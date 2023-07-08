@@ -1,0 +1,22 @@
+<%= form_with url: new_booking_path, method: :get do |f| %>
+  <%= f.hidden_field :passengers_count, value: params[:passengers_count] %>
+
+  <div class="radio-button-container">
+    <% @booking_options.each do |booking| %>
+      <div class="form-field">
+        <%= f.radio_button :booking_option, booking.id, { required: true } %>
+        <%= f.label :booking_option, for: "booking_option_#{booking.id}" do %>
+          <%= "From: #{booking.departure_airport.code}, To: #{booking.arrival_airport.code}, Duration: #{booking.duration}, Start: #{booking.start}"%>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @booking_options.empty? %>
+    <p>Sorry, no flights match your search criteria. Please choose a date within the next 30 days.</p>
+  <% else %>
+    <div class="form-button">
+      <%= f.submit "Book Flight" %>
+    </div>
+  <% end %>
+<% end %>

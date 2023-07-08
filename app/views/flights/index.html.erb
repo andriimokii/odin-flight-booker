@@ -1,0 +1,12 @@
+<div class="flight-container">
+  <%= render 'search_form' %>
+
+  <div class="flight-results">
+    <% if @booking_options %>
+      <p class="sub-title">Available Flights:</p>
+      <%= render 'results_selection_form' %>
+    <% else %>
+      <p class="results-placeholder">Choose flight options to see the available flights.</p>
+    <% end %>
+  </div>
+</div>

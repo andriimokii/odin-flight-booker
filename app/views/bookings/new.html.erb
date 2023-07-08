@@ -1,0 +1,9 @@
+<div class="new-booking-container">
+  <p class="sub-title">Flight Information:</p>
+  <%= "From: #{@flight.departure_airport.code}, To: #{@flight.arrival_airport.code}, Duration: #{@flight.duration}, Start: #{@flight.start}"%>
+
+  <br />
+
+  <p class="sub-title">Add Passenger(s) Info:</p>
+  <%= render 'form', booking: @booking %>
+</div>
