@@ -1,0 +1,5 @@
+Thanks for booking a flight!
+
+<%= "From: #{@booking.flight.departure_airport.code}, To: #{@booking.flight.arrival_airport.code}, Duration: #{@booking.flight.duration}, Start: #{@booking.flight.start}" %>
+
+<%= booking_url(@booking) %>

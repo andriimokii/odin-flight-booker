@@ -9,8 +9,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
+      PassengerMailer.with(booking_id: @booking.id).confirmation_email.deliver_now
       redirect_to booking_path(@booking), notice: 'Booking has been successfully created!'
     else
+      @flight = @booking.flight
       render :new
     end
   end
